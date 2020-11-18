@@ -5,7 +5,7 @@ interface Component {
   onUnMount?: (node: Element) => void
 }
 
-export default class ReactiveDom {
+export default class Domian {
   private registeredComponents: Map<string, Component>
   // TODO do we need a Set to hold the references of the nodes?
   // private mountedNodes: Set<Node>
