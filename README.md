@@ -20,6 +20,7 @@ like SPAs and/or pages that are build with component frameworks.
 ```
 import Domian from 'domian';
 
+// The constructor takes an array of components
 const domian = new Domian([{
   // the classname of the element that you want to hook into
   name: 'header',
@@ -29,6 +30,17 @@ const domian = new Domian([{
   onUnMount((element) => {})
 }]);
 ```
+
+Or as a UMD
+
+```
+// In head or the end of body  
+<script src="https://unpkg.com/domian"></script>
+
+// be sure to call this after the body is there
+const domian = new Domian(...);
+```
+
 
 ## Requirements
 
