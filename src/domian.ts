@@ -11,12 +11,16 @@ export default class Domian {
   // private mountedNodes: Set<Node>
   private observer: MutationObserver
 
-  constructor(components: Array<Component>) {
+  constructor(components: Array<Component> | Component) {
     this.registeredComponents = new Map<string, Component>()
     this.observer = new MutationObserver(this.onDomMutation)
-    components.forEach(component => {
-      this.registeredComponents.set(component.name, component)
-    })
+    if (Array.isArray(components)) {
+      components.forEach(component => {
+        this.registeredComponents.set(component.name, component)
+      })
+    } else {
+      this.registeredComponents.set(components.name, components)
+    }
     this.initializeElements()
     this.initializeObserver()
   }
@@ -81,7 +85,6 @@ export default class Domian {
         }
         addedNodes.forEach(node => {
           if (node instanceof Element) {
-            // TODO is this check necessary? If a node gets added it can't be in mounted nodes!?
             const { className } = node
             const component = this.registeredComponents.get(className)
             if (component && component.onMount) {

@@ -21,22 +21,22 @@ like SPAs and/or pages that are build with component frameworks.
 import Domian from 'domian';
 
 // The constructor takes an array of components
-const domian = new Domian([{
+const domian = new Domian({
   // the classname of the element that you want to hook into
   name: 'header',
-  // the element is the DOM node
-  onMount((element) => {})
-  onUpdate((element) => {})
-  onUnMount((element) => {})
-}]);
+  // the param is the DOM node of the found element
+  onMount(element => {})
+  onUpdate(element => {})
+  onUnMount(element => {})
+});
 ```
 
-Or as a UMD
+Or as a UMD in head or the end of body.
 
-```javascript
-// In head or the end of body  
+```html
 <script src="https://unpkg.com/domian"></script>
-
+```
+```javascript
 // be sure to call this after the body is there
 const domian = new Domian(...);
 ```
