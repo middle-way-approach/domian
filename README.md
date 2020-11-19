@@ -17,7 +17,7 @@ like SPAs and/or pages that are build with component frameworks.
 - No virtual DOM
 
 ## Usage
-```
+```javascript
 import Domian from 'domian';
 
 // The constructor takes an array of components
@@ -33,7 +33,7 @@ const domian = new Domian([{
 
 Or as a UMD
 
-```
+```javascript
 // In head or the end of body  
 <script src="https://unpkg.com/domian"></script>
 
