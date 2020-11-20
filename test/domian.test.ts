@@ -6,7 +6,7 @@ let domian: Domian | null = null
 const OBSERVER_DELAY = 50
 
 const timeout = (ms: number) => {
-  return new Promise(resolve => setTimeout(resolve, ms))
+  return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
 const createElement = (className: string) => {
@@ -104,7 +104,7 @@ describe('Library', () => {
     const onMount2 = jest.fn()
     domian = new Domian([
       { name: 'test', onMount },
-      { name: 'test2', onMount: onMount2 }
+      { name: 'test2', onMount: onMount2 },
     ])
     const container = document.getElementById('container')
     if (container) {

@@ -15,7 +15,7 @@ export default class Domian {
     this.registeredComponents = new Map<string, Component>()
     this.observer = new MutationObserver(this.onDomMutation)
     if (Array.isArray(components)) {
-      components.forEach(component => {
+      components.forEach((component) => {
         this.registeredComponents.set(component.name, component)
       })
     } else {
@@ -33,7 +33,7 @@ export default class Domian {
   private initializeElements() {
     this.registeredComponents.forEach((component, key) => {
       const elements = Array.from(document.getElementsByClassName(key))
-      elements.forEach(element => {
+      elements.forEach((element) => {
         if (component.onMount) {
           component.onMount(element)
         }
@@ -66,7 +66,7 @@ export default class Domian {
    * @param mutations
    */
   private onDomMutation = (mutations: MutationRecord[]) => {
-    mutations.forEach(mutation => {
+    mutations.forEach((mutation) => {
       const { target, type, addedNodes, removedNodes } = mutation
       if (type === 'attributes' && target instanceof Element) {
         const { className } = target
@@ -83,7 +83,7 @@ export default class Domian {
             component.onUpdate(target)
           }
         }
-        addedNodes.forEach(node => {
+        addedNodes.forEach((node) => {
           if (node instanceof Element) {
             const { className } = node
             const component = this.registeredComponents.get(className)
@@ -92,7 +92,7 @@ export default class Domian {
             }
           }
         })
-        removedNodes.forEach(node => {
+        removedNodes.forEach((node) => {
           if (node instanceof Element) {
             const { className } = node
             const component = this.registeredComponents.get(className)
